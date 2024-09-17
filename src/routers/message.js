@@ -1,14 +1,24 @@
 import { Router } from "express";
 import { controllerWrapper as CW } from "../utils/controllerWrapper.js"
 import {
-	getAllMessages,
+	getAllReceivedMessages,
+	getSentMessagesToSomeone,
+	getReceivedMessagesFromSomeone,
 	createOneMessage
 } from "../controllers/messageController.js"
 
 export const router = Router();
 
-// get all messages written by someone in particular
-router.get("/:authorProfileId", CW(getAllMessages))
+// Get all messages of someone
+router.get("/:userId", CW(getAllReceivedMessages))
 
-// post a message
-router.post("/", CW(createOneMessage))
+// get all messages sent to someone
+router.get("/:userId/sent/:targetId", CW(getSentMessagesToSomeone))
+
+// Get all messages received by someone
+router.get("/:userId/received/:senderId", CW(getReceivedMessagesFromSomeone))
+
+// Create a message
+router.post("/:userId/:targetProfileId", CW(createOneMessage))
+
+

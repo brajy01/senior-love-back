@@ -1,49 +1,30 @@
 @host=localhost
 @port=4000
 
-### Récupérer les users
+### Get users
 GET http://{{host}}:{{port}}/users
 
-
-### Récupérer un user
+### Get a user
 GET http://{{host}}:{{port}}/users/{userId}
 
-### Récupérer le user 2
+### Get the user 2
 GET http://{{host}}:{{port}}/users/2
 
-
-### Créer un user
+### Create a user
 POST http://{{host}}:{{port}}/users
 Content-Type: application/json
 
 {
-    "email": "jacqueline.r@gmail.com",
+    "email": "jacqueline@gmail.com",
     "password": "jacoquine",
     "role": "admin"
 }
 
-### Modifier un user
-PATCH http://{{host}}:{{port}}/users/{userId}
+### Update a user
+PUT http://{{host}}:{{port}}/users/{userId}
 
-### Modifier un user
-PATCH http://{{host}}:{{port}}/users/12
-Content-Type: application/json
-
-{
-	"role": "user"
-}
-
-
-### Supprimer un user
-DELETE http://{{host}}:{{port}}/users/{userId}
-
-### Supprimer le user 3
-DELETE http://{{host}}:{{port}}/users/12
-
-### Créer un profil
-POST http://{{host}}:{{port}}/users/{userId}/profile
-### Créer un profil
-POST http://{{host}}:{{port}}/users/13/profile
+### Create a profile
+POST http://{{host}}:{{port}}/users/9/profile
 Content-Type: application/json
 
 {
@@ -55,4 +36,29 @@ Content-Type: application/json
     "bio": "",
     "status": false,
     "avatar": ""
+}
+
+### Update a user
+PATCH http://{{host}}:{{port}}/users/9
+Content-Type: application/json
+
+{
+	"role": "user"
+}
+
+### Delete a user
+DELETE http://{{host}}:{{port}}/users/{userId}
+
+### Delete the user 3
+DELETE http://{{host}}:{{port}}/users/16
+
+
+### Login
+POST http://{{host}}:{{port}}/users/login
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "password",
+    
 }

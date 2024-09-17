@@ -1,16 +1,16 @@
 @host=localhost
 @port= 4000
 
-### Récupérer les events
+### Get events
 GET http://{{host}}:{{port}}/events
 
-### récupérer un event
+### Get one event
 GET http://{{host}}:{{port}}/events/1
 
-### récupérer l'event 4
-GET http://{{host}}:{{port}}/events/2
+### Get the event 4
+GET http://{{host}}:{{port}}/events/5
 
-### Créer un nouvel event
+### Create a new event
 POST http://{{host}}:{{port}}/events
 Content-Type: application/json
 
@@ -24,13 +24,13 @@ Content-Type: application/json
   "maxnumberpeople": 12
 }
 
-### Modifier un event
-PATCH http://{{host}}:{{port}}/events/6
+### Update an event
+PATCH http://{{host}}:{{port}}/events/5
 Content-Type: application/json
 
 {
     "name": "Tournoi Smash Bros All-Star"
 }
 
-### Supprimer un event
-DELETE http://{{host}}:{{port}}/events/6
+### Delete an event
+DELETE http://{{host}}:{{port}}/events/5

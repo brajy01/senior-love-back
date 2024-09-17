@@ -20,10 +20,18 @@ Profile.init({
 		type: DataTypes.TEXT,
 		allowNull: false,
 	},
-	location: {
+	city: {
 		type: DataTypes.TEXT,
 		allowNull: false
 	},	
+	department: {
+		type: DataTypes.TEXT,
+		allowNull: false
+	},
+	departmentNumber: {
+		type: DataTypes.INTEGER,
+		allowNull: false
+	},
 	bio: {
 		type: DataTypes.STRING,
 	},
@@ -33,8 +41,7 @@ Profile.init({
 	},
 	avatar : {
 		type: DataTypes.STRING,
-	},
-	
+	}
 }, {
 		sequelize,
 		tableName: "profile",

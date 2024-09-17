@@ -1,27 +1,39 @@
 {
   "name": "projet-senior-love-back",
+  "jest": {
+    "verbose": true
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon index.js",
     "start": "node index.js",
     "db:create": "psql -U admin -d senior -f data/create_tables.sql",
     "db:seed": "psql -U admin -d senior -f data/seeding.sql",
     "db:reset": "npm run db:create && npm run db:seed"
+   
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "email-validator": "^2.0.4",
     "express": "^4.19.2",
     "express-jwt": "^8.4.1",
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.4",
     "pg": "^8.12.0",
     "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }

@@ -44,22 +44,48 @@ Interest.belongsToMany(Profile, {
 	through: ProfileHaveInterest,
 });
 
-
-// Profile <--> Profile (Many-to-Many)
-// A profile can write to MANY profiles and vice versa
-Profile.belongsToMany(Profile, {
-	as: "sentMessages",
-	through: Message,
-	foreignKey: 'authorProfileId',
-  otherKey: 'targetProfileId'
+// Profile <--> Message (One-to-Many)
+Profile.hasMany(Message, {
+  foreignKey: 'senderProfileId', // foreign key for the sender of the message
+  as: 'sentMessages' // alias for the sent messages
+});
+Message.belongsTo(Profile, {
+	foreignKey: 'senderProfileId', // foreign key in Message table 
+	as: 'senderProfile' // alias pour l'auteur du message
 });
 
-Profile.belongsToMany(Profile, {
-	as: "receivedMessages",
-	through: Message,
-	foreignKey: 'targetProfileId',
-  otherKey: 'authorProfileId'
+
+Profile.hasMany(Message, {
+  foreignKey: 'targetProfileId', // foreign key of the receiver of the message
+  as: 'receivedMessages' // alias for the received messages
 });
+Message.belongsTo(Profile, {
+  foreignKey: 'targetProfileId', // foreign key in Message table
+  as: 'targetProfile' // alias for the receiver of the message
+});
+
 
 export { Interest, Event, Profile, User, Message, sequelize };
 
+
+
+
+
+
+
+
+
+
+// Profile <--> Profile (Many-to-Many)
+// A profile can write to MANY profiles and vice versa
+//Profile.belongsToMany(Profile, {
+//	as: "targetProfile",
+//	through: Message,
+//	foreignKey: "sender_profile_id"
+//});
+
+//Profile.belongsToMany(Profile, {
+//	as: "senderProfile",
+//	through: Message,
+//	foreignKey: "target_profile_id"
+//});

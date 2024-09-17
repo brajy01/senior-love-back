@@ -12,28 +12,20 @@ Message.init({
 	status: {
 		type: DataTypes.BOOLEAN
 	},
-  authorProfileId: {
+	senderProfileId: {
     type: DataTypes.INTEGER,
-    references: {
-      model: Profile,
-      key: "id",
-    },
-    allowNull: false, //To be sure this foreign key is never NULL 
+    allowNull: false,
+    field: 'sender_profile_id'
   },
   targetProfileId: {
     type: DataTypes.INTEGER,
-    references: {
-      model: Profile,
-      key: "id",
-    },
-    allowNull: false, //To be sure this foreign key is never NULL
+    allowNull: false,
+    field: 'target_profile_id' 
   },
+
 }, {
   sequelize,
   tableName: "message",
-  //indexes: [
-   // {
-   //   fields: ["author_profile_id, target_profile_id"],
-   // }
-  //],
+	timestamps: true,
+  
 });

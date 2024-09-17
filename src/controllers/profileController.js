@@ -1,8 +1,7 @@
-import { Profile } from '../models/index.js';
-import { User } from '../models/index.js';
+import { Profile, Message, User } from '../models/index.js';
 import { HTTPError } from '../errors/httpErrors.js';
 
-// get all profiles
+// Get all profiles
 export const getAllProfiles = async (_, res) => {
     const profiles = await Profile.findAll({
         include: [
@@ -14,13 +13,23 @@ export const getAllProfiles = async (_, res) => {
                 model: User, // Includes the User model
                 as: "userProfile", // Uses the alias defined in the belongsTo association
             },
+            {
+                model: Message,
+                as: 'sentMessages', // Assure-toi que l'alias correspond à l'association définie
+                attributes: ['senderProfileId', 'content', 'status', 'targetProfileId'], // Spécifie les attributs du message à inclure
+              },
+              {
+                model: Message,
+                as: 'receivedMessages', // Assure-toi que l'alias correspond à l'association définie
+                attributes: ['senderProfileId', 'content', 'status', 'targetProfileId'], // Spécifie les attributs du message à inclure
+              },
         ]
         },
     );
     return res.json(profiles);
 };
 
-// get one profile
+// Get one profile
 export const getOneProfile = async (req, res) => {
     const profile = await Profile.findByPk(req.params.profileId, {
         include: [
@@ -42,7 +51,7 @@ export const getOneProfile = async (req, res) => {
     return res.json(profile);
 }; 
 
-// update a profile
+// Update a profile
 export const modifyOneProfile = async (req, res) => {
     const profile = await Profile.findByPk(req.params.profileId, {
         include: {
@@ -59,7 +68,7 @@ export const modifyOneProfile = async (req, res) => {
     return res.json(profile);
 };
 
-// delete a profile
+// Delete a profile
 export const deleteOneProfile = async (req, res) => {
     const profile = await Profile.findByPk(req.params.profileId);
     

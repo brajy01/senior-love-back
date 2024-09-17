@@ -4,26 +4,30 @@ import { router as eventRouter } from "./event.js"
 import { router as messageRouter } from "./message.js"
 import { router as interestRouter } from "./interest.js"
 import { router as userRouter } from "./user.js"
+import { router as authRouter } from "./auth.js"
 import { errorHandler } from "../middlewares/errorHandler.js"
 
 export const router = Router();
 
-// router management profiles
+// Router profiles handler
 router.use("/profiles", profileRouter);
 
-// router management events
+// Router events handler
 router.use("/events", eventRouter);
 
-//router managements messages
+// Router messages handler
 router.use("/messages", messageRouter);
 
-//router managements interests
+// Router interests handler
 router.use("/interests", interestRouter)
 
-//router managements users
+// Router users handler
 router.use("/users", userRouter)
 
-//middleware de capture d'erreur
+//Router authentication handler
+router.use("/auth", authRouter)
+
+//Middleware error handler
 router.use(errorHandler);
 
 

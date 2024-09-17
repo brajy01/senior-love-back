@@ -3,7 +3,9 @@ import { HTTPError } from '../errors/httpErrors.js';
 
 // Get all events
 export const getAllEvents = async (req, res) => {
+    const limit = req.query.limit ? parseInt(req.query.limit, 10) : 10; // Par défaut 10 événements
     const events = await Event.findAll({
+        limit: limit,
         include: {
             association: 'profiles',
             through: {attributes: []}

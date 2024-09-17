@@ -19,6 +19,10 @@ Event.init({
 		type: DataTypes.DATE,
 		allowNull:false,
 	},
+	hour: {
+		type: DataTypes.STRING,
+		allowNull:false,
+	},
 	type: {
 		type: DataTypes.STRING,
 		allowNull: false,	
@@ -26,6 +30,10 @@ Event.init({
 	published: {
 		type: DataTypes.BOOLEAN,
 		allowNull: false,
+	},
+	photo: {
+		type: DataTypes.STRING,
+		allowNull:false,
 	},
 	maxnumberpeople : {
 		type: DataTypes.INTEGER,

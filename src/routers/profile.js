@@ -9,9 +9,16 @@ import {
 
 export const router = Router();
 
+// Get all profiles
 router.get("/", CW(getAllProfiles))
+
+// Get one specific profile
 router.get("/:profileId", CW(getOneProfile))
+
+// Delete a profile
 router.delete("/:profileId", CW(deleteOneProfile))
+
+// Update a profile
 router.patch("/:profileId", CW(modifyOneProfile))
 
 

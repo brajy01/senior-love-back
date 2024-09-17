@@ -1,16 +1,16 @@
 @host=localhost
 @port=4000
 
-### Récupérer les profiles
+### Get profiles
 GET http://{{host}}:{{port}}/profiles
 
-### Récupérer un profil
+### Get one profile
 GET http://{{host}}:{{port}}/profiles/{profile_id}
 
-### Récupérer le profil 3
+### Get the profile 3
 GET http://{{host}}:{{port}}/profiles/3
 
-### Modifier un profil
+### Update a profile
 PUT http://{{host}}:{{port}}/profiles/{profile_id}
 
 ###
@@ -18,12 +18,12 @@ PATCH http://{{host}}:{{port}}/profiles/3
 Content-Type: application/json
 
 {
-	"lastname": "Fournier"
+	"firstname": "Jacqueline"
 }
 
-### Supprimer un profil
+### Delete a profile
 DELETE http://{{host}}:{{port}}/profiles/{profile_id}
 
-### Supprimer le profil 3
+### Delete the profile 3
 DELETE http://{{host}}:{{port}}/profiles/3
 

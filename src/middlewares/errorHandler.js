@@ -1,4 +1,6 @@
 // eslint-disable-next-line no-unused-vars
+
+
 export const errorHandler = (error, _, res, __) => {
   if(error.statusCode){
     return res.status(error.statusCode).json({ error: error.message});
