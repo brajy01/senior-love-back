@@ -13,14 +13,14 @@
     "start": "node index.js",
     "db:create": "psql -U admin -d senior -f data/create_tables.sql",
     "db:seed": "psql -U admin -d senior -f data/seeding.sql",
-    "db:reset": "npm run db:create && npm run db:seed"
-   
+    "db:reset": "npm run db:create && npm run db:seed",
+    "install": "npm install && npm rebuild"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
