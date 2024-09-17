@@ -1,0 +1,7 @@
+@host=localhost
+@port=4000
+
+### Récupérer les intérêts
+GET http://{{host}}:{{port}}/interests
+
+

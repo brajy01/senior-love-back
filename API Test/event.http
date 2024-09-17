@@ -1,0 +1,36 @@
+@host=localhost
+@port= 4000
+
+### Récupérer les events
+GET http://{{host}}:{{port}}/events
+
+### récupérer un event
+GET http://{{host}}:{{port}}/events/1
+
+### récupérer l'event 4
+GET http://{{host}}:{{port}}/events/2
+
+### Créer un nouvel event
+POST http://{{host}}:{{port}}/events
+Content-Type: application/json
+
+{
+  "name":"Tournoi Smash Bros",
+  "description":"Que le meilleur gagne",
+  "location": "Rennes",
+  "date": "2024-09-30",
+  "type": "Activités culturelles",
+  "published": false,
+  "maxnumberpeople": 12
+}
+
+### Modifier un event
+PATCH http://{{host}}:{{port}}/events/6
+Content-Type: application/json
+
+{
+    "name": "Tournoi Smash Bros All-Star"
+}
+
+### Supprimer un event
+DELETE http://{{host}}:{{port}}/events/6

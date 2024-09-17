@@ -1,0 +1,29 @@
+@host=localhost
+@port=4000
+
+### Récupérer les profiles
+GET http://{{host}}:{{port}}/profiles
+
+### Récupérer un profil
+GET http://{{host}}:{{port}}/profiles/{profile_id}
+
+### Récupérer le profil 3
+GET http://{{host}}:{{port}}/profiles/3
+
+### Modifier un profil
+PUT http://{{host}}:{{port}}/profiles/{profile_id}
+
+###
+PATCH http://{{host}}:{{port}}/profiles/3
+Content-Type: application/json
+
+{
+	"lastname": "Fournier"
+}
+
+### Supprimer un profil
+DELETE http://{{host}}:{{port}}/profiles/{profile_id}
+
+### Supprimer le profil 3
+DELETE http://{{host}}:{{port}}/profiles/3
+

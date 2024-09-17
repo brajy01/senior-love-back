@@ -1,0 +1,11 @@
+@host=localhost
+@port=4000
+
+### Récupérer un message
+GET http://{{host}}:{{port}}/messages/{profile_id}
+
+### Récupérer un message
+GET http://{{host}}:{{port}}/messages/1
+
+### Créer un message
+POST http://{{host}}:{{port}}/messages
