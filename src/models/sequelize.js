@@ -12,13 +12,12 @@ export const sequelize = new Sequelize(databaseURL, {
     underscored: true, // column names in the DB will be in snake case
   },
   logging: false, // if false -> telling sequelize to not display the request in the console
-  
 });
 
-try{
+try {
   await sequelize.authenticate();
   console.log("📚 Sequelize connected");
-} catch (error){
+} catch (error) {
   console.log("❌ Sequelize can't connect to database");
   console.log(error);
 }
