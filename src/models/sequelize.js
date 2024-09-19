@@ -9,9 +9,15 @@ const databaseURL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PG
 // create the instance (an instance is an object, made by a class) of sequelize
 export const sequelize = new Sequelize(databaseURL, {
   define: {
-    underscored: true, // column names in the DB will be in snake case
+    underscored: true, // les noms des colonnes dans le DB seront en snake case
   },
-  logging: false, // if false -> telling sequelize to not display the request in the console
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 try {
